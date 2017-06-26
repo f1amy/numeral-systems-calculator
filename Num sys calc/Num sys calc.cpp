@@ -7,18 +7,22 @@
 using namespace std;
 
 int main() {
-	int choice = 0;
-	long long int number = 0;
-	string hexNumber = "";
-	long double a = 0;
-	char b[33] = "";
+	ios oldState(nullptr);
+	oldState.copyfmt(std::cout);
+	int choice;
+	long long int number;
+	string hexNumber;
+	long double a;
+	char b[33];
 	cout << "Converting numbers into other numeral systems.\nBy Yury Putimcev & Fedor Bryzgalov." << endl;
 	do {
 		a = 0;
 		choice = 0;
 		number = 0;
-		//b[33] = ""; //clear b array
-		hexNumber = "NULL";
+		hexNumber.clear();
+		for (int i = 0; i < 33; i++) {
+			b[i] = 0;
+		}
 		cout << "\nSelect an operation:" << endl;
 		cout << "1) Binary to decimal (2 -> 10)." << endl;
 		cout << "2) Binary to hexadecimal (2 -> 16)." << endl;
@@ -42,6 +46,7 @@ int main() {
 			cout << "Enter the binary number.\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(2) = " << uppercase << hex << bin2dec(number) << "(16).";
+			cout.copyfmt(oldState);
 			break;
 		case 3:
 			cout << "Enter the decimal number.\n> ";
@@ -52,6 +57,7 @@ int main() {
 			cout << "Enter the decimal number.\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(10) = " << uppercase << hex << number << "(16).";
+			cout.copyfmt(oldState);
 			break;
 		case 5:
 			cout << "Enter the hexadecimal number.\n> ";
@@ -62,6 +68,7 @@ int main() {
 		case 6:
 			cout << "Enter the hexadecimal number.\n> ";
 			cin >> hexNumber;
+			cout << hexNumber;
 			transform(hexNumber.begin(), hexNumber.end(), hexNumber.begin(), ::toupper);
 			cout << "Answer: " << hexNumber << "(16) = " << dec2bin(hex2dec(hexNumber)) << "(2).";
 			break;
@@ -89,8 +96,7 @@ int main() {
 			cout << "Error. Press any key to try again.";
 			break;
 		}
-		cin.ignore();
-		cin.get();
+		_getch(); cout << endl; //cin.ignore(); cin.get(); //for linux
 	} while (choice != 10);
 	return 0;
 }
