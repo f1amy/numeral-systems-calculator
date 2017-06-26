@@ -10,11 +10,15 @@ int main() {
 	int choice = 0;
 	long long int number = 0;
 	string hexNumber = "";
-	cout << "Converting numbers into other numeral systems.\nBy Yury Putimcev." << endl;
+	long double a = 0;
+	char b[33] = "";
+	cout << "Converting numbers into other numeral systems.\nBy Yury Putimcev & Fedor Bryzgalov." << endl;
 	do {
+		a = 0;
 		choice = 0;
 		number = 0;
-		hexNumber = "";
+		//b[33] = ""; //clear b array
+		hexNumber = "NULL";
 		cout << "\nSelect an operation:" << endl;
 		cout << "1) Binary to decimal (2 -> 10)." << endl;
 		cout << "2) Binary to hexadecimal (2 -> 16)." << endl;
@@ -22,7 +26,10 @@ int main() {
 		cout << "4) Decimal to hexadecimal (10 -> 16)." << endl;
 		cout << "5) Hexadecimal to decimal (16 -> 10)." << endl;
 		cout << "6) Hexadecimal to binary (16 -> 2)." << endl;
-		cout << "7) Exit.\n> ";
+		cout << "7) Minus decimal to binary (10 -> 2)." << endl;
+		cout << "8) Minus Binary to decimal (2 -> 10)." << endl;
+		cout << "9) Fractional part of decimal to binary (10 -> 2)." << endl;
+		cout << "10) Exit.\n> ";
 		cin >> choice;
 		cout << endl;
 		switch (choice) {
@@ -59,6 +66,23 @@ int main() {
 			cout << "Answer: " << hexNumber << "(16) = " << dec2bin(hex2dec(hexNumber)) << "(2).";
 			break;
 		case 7:
+			cout << "Enter the decimal number (example: -1010).\n> ";
+			cin >> number;
+			cout << "Answer: " << number << "(10) = " << dec2bin_minus(b, number) << "(2).";
+			break;
+		case 8:
+			cout << "Enter the binary number (example: -1010).\n> ";
+			cin >> b;
+			cout << "Answer: " << b << "(2) = " << bin2dec_minus(b) << "(10).";
+			break;
+		case 9:
+			cout << "Enter the fractional part of number (example: 0.xxx).\n> ";
+			cin >> a;
+			cout << "Answer: " << number << "(10) = ";
+			dec2bin_fr_part(a);
+			cout << "(2).";
+			break;
+		case 10:
 			cout << "Press any key to exit.";
 			break;
 		default:
@@ -67,25 +91,6 @@ int main() {
 		}
 		cin.ignore();
 		cin.get();
-	} while (choice != 7);
+	} while (choice != 10);
 	return 0;
 }
-
-/*
-maybe all operations:
-normal:
-bin2dec
-bin2hex
-dec2bin
-dec2hex
-hex2dec
-hex2bin
-
-bytes with a singn:
-BWAS102BWAS2
-BWAS22BWAS10
-
-float:
-fdec2fbin
-fbin2fdec
-*/

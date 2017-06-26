@@ -31,3 +31,38 @@ long long int dec2bin(long long int n) {
 	}
 	return binaryNumber;
 }
+
+char* dec2bin_minus(char *d, long long int n) {
+	char *t = d;
+	unsigned int u = (unsigned)n;
+	for (unsigned int i = u; i != 0; i >>= 1) {
+		d++;
+	}
+	*d = '\0';
+	for (--d; u != 0; u >>= 1) {
+		*d-- = (u & 1) + '0';
+	}
+	return t;
+}
+
+long long int bin2dec_minus(char *b) {
+	unsigned int n = 0u;
+	while (*b) {
+		n |= (*b - '0');
+		if (*(++b)) {
+			n <<= 1;
+		}
+	}
+	return (int)n;
+}
+
+void dec2bin_fr_part(long double a) {
+	cout << "0.";
+	for (int i = 0; i < 32; i++) {
+		a *= 2;
+		cout << int(a);
+		if (a >= 1) {
+			a--;
+		}
+	}
+}
