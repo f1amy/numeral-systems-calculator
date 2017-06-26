@@ -14,7 +14,8 @@ int main() {
 	string hexNumber;
 	long double a;
 	char b[33];
-	cout << "Converting numbers into other numeral systems.\nBy Yury Putimcev & Fedor Bryzgalov." << endl;
+	cout << "Converting numbers into other numeral systems." << endl
+		<< "By Yury Putimcev & Fedor Bryzgalov. Date: 27.06.2017" << endl;
 	do {
 		a = 0;
 		choice = 0;
