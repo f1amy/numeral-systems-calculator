@@ -38,52 +38,52 @@ int main() {
 		cout << endl;
 		switch (choice) {
 		case 1:
-			cout << "Enter the binary number.\n> ";
+			cout << "Enter the binary number (example: 1011).\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(2) = " << bin2dec(number) << "(10).";
 			break;
 		case 2:
-			cout << "Enter the binary number.\n> ";
+			cout << "Enter the binary number (example: 1011).\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(2) = " << uppercase << hex << bin2dec(number) << "(16).";
 			cout.copyfmt(oldState);
 			break;
 		case 3:
-			cout << "Enter the decimal number.\n> ";
+			cout << "Enter the decimal number (example: 1234).\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(10) = " << dec2bin(number) << "(2).";
 			break;
 		case 4:
-			cout << "Enter the decimal number.\n> ";
+			cout << "Enter the decimal number (example: 1234).\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(10) = " << uppercase << hex << number << "(16).";
 			cout.copyfmt(oldState);
 			break;
 		case 5:
-			cout << "Enter the hexadecimal number.\n> ";
+			cout << "Enter the hexadecimal number (example: 2A3B).\n> ";
 			cin >> hexNumber;
 			transform(hexNumber.begin(), hexNumber.end(), hexNumber.begin(), ::toupper);
 			cout << "Answer: " << hexNumber << "(16) = " << hex2dec(hexNumber) << "(10).";
 			break;
 		case 6:
-			cout << "Enter the hexadecimal number.\n> ";
+			cout << "Enter the hexadecimal number (example: 2A3B).\n> ";
 			cin >> hexNumber;
 			cout << hexNumber;
 			transform(hexNumber.begin(), hexNumber.end(), hexNumber.begin(), ::toupper);
 			cout << "Answer: " << hexNumber << "(16) = " << dec2bin(hex2dec(hexNumber)) << "(2).";
 			break;
 		case 7:
-			cout << "Enter the decimal number (example: -1010).\n> ";
+			cout << "Enter the decimal number (example: -1234).\n> ";
 			cin >> number;
 			cout << "Answer: " << number << "(10) = " << dec2bin_minus(b, number) << "(2).";
 			break;
 		case 8:
-			cout << "Enter the binary number (example: -1010).\n> ";
+			cout << "Enter the binary number (example: -1011).\n> ";
 			cin >> b;
 			cout << "Answer: " << b << "(2) = " << bin2dec_minus(b) << "(10).";
 			break;
 		case 9:
-			cout << "Enter the fractional part of number (example: 0.xxx).\n> ";
+			cout << "Enter the fractional part of number (example: 0.1234).\n> ";
 			cin >> a;
 			cout << "Answer: " << number << "(10) = ";
 			dec2bin_fr_part(a);
@@ -96,7 +96,8 @@ int main() {
 			cout << "Error. Press any key to try again.";
 			break;
 		}
-		_getch(); cout << endl; //cin.ignore(); cin.get(); //for linux
+		//_getch(); cout << endl; //for windows
+		cin.ignore(); cin.get(); //for linux
 	} while (choice != 10);
 	return 0;
 }
